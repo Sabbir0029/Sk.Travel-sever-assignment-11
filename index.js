@@ -46,7 +46,6 @@ async function run(){
       const services = await data.limit(6).toArray()
       res.send(services)
     })
-
         // POST API
         // app.post('/services',async(req,res)=>{
         //   const service = req.body;

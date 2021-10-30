@@ -1,5 +1,6 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const ObjectId = require('mongodb').ObjectId;
 require('dotenv').config();
 const cors = require('cors')
 const app = express()
@@ -40,6 +41,22 @@ async function run(){
         count,
         services});
     });
+
+    app.get('/Homeservices/:id', async(req,res)=>{
+      const id = req.params.id;
+      const query ={_id: ObjectId(id)};
+      const service = await dataHome.findOne(query)
+      console.log(service);
+      res.send(service);
+    })
+
+    app.get('/services/:id', async(req,res)=>{
+      const id = req.params.id;
+      const query ={_id: ObjectId(id)};
+      const service = await dataCollection.findOne(query)
+      console.log(service);
+      res.send(service);
+    })
 
     app.get('/Homeservices', async (req, res)=>{
       const data = dataHome.find({})

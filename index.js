@@ -46,7 +46,6 @@ async function run(){
       const id = req.params.id;
       const query ={_id: ObjectId(id)};
       const service = await dataHome.findOne(query)
-      console.log(service);
       res.send(service);
     })
 
@@ -54,7 +53,6 @@ async function run(){
       const id = req.params.id;
       const query ={_id: ObjectId(id)};
       const service = await dataCollection.findOne(query)
-      console.log(service);
       res.send(service);
     })
 
@@ -66,7 +64,6 @@ async function run(){
     // POST API
     app.post('/bookinginfo', async(req,res)=>{
       const info = req.body;
-      console.log(info);
       const result = await dataCollection.insertOne(info);
       res.json(result)
     });

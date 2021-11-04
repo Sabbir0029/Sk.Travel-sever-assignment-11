@@ -63,12 +63,13 @@ async function run(){
       const services = await data.limit(6).toArray()
       res.send(services)
     })
-        // POST API
-        // app.post('/services',async(req,res)=>{
-        //   const service = req.body;
-        //   const result = await servicesCollection.insertOne(service);
-        //   res.json(result)
-        // })
+    // POST API
+    app.post('/bookinginfo', async(req,res)=>{
+      const info = req.body;
+      console.log(info);
+      const result = await dataCollection.insertOne(info);
+      res.json(result)
+    });
   }
   finally{
 
